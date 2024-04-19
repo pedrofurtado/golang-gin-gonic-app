@@ -1,0 +1,34 @@
+version: '3'
+
+services:
+  db_in_postgres:
+    restart: always
+    image: postgres:11-alpine
+    environment:
+      POSTGRES_USER: my_db_user
+      POSTGRES_DB: my_db
+      POSTGRES_PASSWORD: my_db_password
+  app:
+    restart: always
+    volumes:
+      - ./:/app
+    command: /bin/bash -c 'goose -allow-missing up && nodemon -L --ext "go,mod,sum" --exec "go run main.go" --signal SIGTERM'
+    build:
+      context: .
+      dockerfile: Dockerfile.dev
+    environment:
+      # Values: "debug" for development, "release" for production. Equivalent to RAILS_ENV in Rails world
+      GIN_MODE: debug
+
+      GOOSE_MIGRATION_DIR: /app/src/migrations
+      GOOSE_DRIVER: postgres
+      GOOSE_DBSTRING: "host=db_in_postgres port=5432 user=my_db_user password=my_db_password dbname=my_db sslmode=disable"
+
+      DATABASE_HOST: db_in_postgres
+      DATABASE_PORT: 5432
+      DATABASE_NAME: my_db
+      DATABASE_USER: my_db_user
+      DATABASE_PASSWORD: my_db_password
+      DATABASE_SSLMODE: disable
+    ports:
+      - 3005:80
