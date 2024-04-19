@@ -5,6 +5,7 @@ import (
 	"net/http"
 	"github.com/gin-gonic/gin"
 	"github.com/golodash/galidator"
+	"github.com/gin-contrib/requestid"
 	"my-app/src/models"
 )
 
@@ -44,6 +45,7 @@ func index(r *gin.RouterGroup) {
 	models.DB.Find(&products)
 
 	r.GET("/products", func(c *gin.Context) {
+		fmt.Printf("%v Processing ProductsController index\n", requestid.Get(c))
 		c.JSON(http.StatusOK, gin.H{"data": products})
 	})
 }
