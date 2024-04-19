@@ -17,6 +17,8 @@ services:
       context: .
       dockerfile: Dockerfile.dev
     environment:
+      TZ: America/Sao_Paulo
+
       # Values: "debug" for development, "release" for production. Equivalent to RAILS_ENV in Rails world
       GIN_MODE: debug
 

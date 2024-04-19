@@ -7,12 +7,12 @@ import (
 	"github.com/gin-gonic/gin"
 	"github.com/gin-contrib/requestid"
 	"github.com/google/uuid"
-	controllersV1 "my-app/src/controllers/v1"
+	"my-app/src/controllers"
 )
 
 func SetupControllers(r *gin.Engine) {
 	setupRootRoute(r)
-	setupV1Routes(r)
+	setupApiRoutes(r)
 }
 
 func setupRootRoute(r *gin.Engine) {
@@ -21,14 +21,14 @@ func setupRootRoute(r *gin.Engine) {
 	})
 }
 
-func setupV1Routes(r *gin.Engine) {
-	v1Group := r.Group("/v1")
-	setupV1Middlewares(v1Group)
-	controllersV1.ProductsController(v1Group)
-	controllersV1.ZipcodesController(v1Group)
+func setupApiRoutes(r *gin.Engine) {
+	apiGroup := r.Group("/api")
+	setupApiMiddlewares(apiGroup)
+	controllers.ProductsController(apiGroup)
+	controllers.ZipcodesController(apiGroup)
 }
 
-func setupV1Middlewares(r *gin.RouterGroup) {
+func setupApiMiddlewares(r *gin.RouterGroup) {
 	setupRequestIDMiddleware(r)
 	setupBasicAuthMiddleware(r)
 	setupRequestAndResponseLogMiddleware(r)

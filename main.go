@@ -8,7 +8,7 @@ import (
 
 func setupWebApp() *gin.Engine {
 	r := gin.Default()
-	models.SetupDBConnection();
+	models.SetupDBConnection()
 	routes.SetupControllers(r)
 	return r
 }
