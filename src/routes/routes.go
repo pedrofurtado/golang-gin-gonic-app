@@ -25,6 +25,7 @@ func setupV1Routes(r *gin.Engine) {
 	v1Group := r.Group("/v1")
 	setupV1Middlewares(v1Group)
 	controllersV1.ProductsController(v1Group)
+	controllersV1.ZipcodesController(v1Group)
 }
 
 func setupV1Middlewares(r *gin.RouterGroup) {

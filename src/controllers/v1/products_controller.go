@@ -33,24 +33,24 @@ var (
 )
 
 func ProductsController(r *gin.RouterGroup) {
-	index(r)
-	show(r)
-	create(r)
-	update(r)
-	delete(r)
+	indexProducts(r)
+	showProduct(r)
+	createProduct(r)
+	updateProduct(r)
+	deleteProduct(r)
 }
 
-func index(r *gin.RouterGroup) {
+func indexProducts(r *gin.RouterGroup) {
 	var products []models.Product
 	models.DB.Find(&products)
 
 	r.GET("/products", func(c *gin.Context) {
-		fmt.Printf("%v Processing ProductsController index\n", requestid.Get(c))
+		fmt.Printf("%v Processing ProductsController indexProducts\n", requestid.Get(c))
 		c.JSON(http.StatusOK, gin.H{"data": products})
 	})
 }
 
-func show(r *gin.RouterGroup) {
+func showProduct(r *gin.RouterGroup) {
 	r.GET("/products/:id", func(c *gin.Context) {
 		id := c.Params.ByName("id")
 
@@ -65,7 +65,7 @@ func show(r *gin.RouterGroup) {
 	})
 }
 
-func create(r *gin.RouterGroup) {
+func createProduct(r *gin.RouterGroup) {
 	r.POST("/products", func(c *gin.Context) {
 		params := &CreateProductData{}
 		if err := c.BindJSON(params); err != nil {
@@ -85,7 +85,7 @@ func create(r *gin.RouterGroup) {
 	})
 }
 
-func update(r *gin.RouterGroup) {
+func updateProduct(r *gin.RouterGroup) {
 	r.PUT("/products/:id", func(c *gin.Context) {
 		id := c.Params.ByName("id")
 
@@ -108,7 +108,7 @@ func update(r *gin.RouterGroup) {
 	})
 }
 
-func delete(r *gin.RouterGroup) {
+func deleteProduct(r *gin.RouterGroup) {
 	r.DELETE("/products/:id", func(c *gin.Context) {
 		id := c.Params.ByName("id")
 
