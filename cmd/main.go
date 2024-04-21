@@ -1,11 +1,11 @@
 package main
 
 import (
-  "my-app/cmd/web"
-  "my-app/cmd/sqs_consumer"
+  web "my-app/cmd/web"
+  sqsConsumer "my-app/cmd/sqs_consumer"
 )
 
 func main() {
-	go cmd.SetupSQSConsumers()
-	cmd.SetupWebApp().Run(":8080")
+	go sqsConsumer.SetupSQSConsumers()
+	web.SetupWebApp().Run(":8080")
 }
