@@ -32,5 +32,12 @@ services:
       DATABASE_USER: my_db_user
       DATABASE_PASSWORD: my_db_password
       DATABASE_SSLMODE: disable
+
+      AWS_ACCESS_KEY_ID: 'access-key'
+      AWS_SECRET_ACCESS_KEY: 'secret-key'
+      AWS_DEFAULT_REGION: us-east-1
+
+      APP_SQS_QUEUE_NAME: my-sqs-queue-name
+      APP_SQS_WAIT_TIME_SECONDS: "20"
     ports:
       - 3005:80
