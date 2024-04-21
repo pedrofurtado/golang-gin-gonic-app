@@ -2,8 +2,8 @@ package cmd
 
 import (
 	"github.com/gin-gonic/gin"
-	"my-app/src/routes"
-	"my-app/src/models"
+	"my-app/internal/adapter/input/routes"
+	"my-app/internal/adapter/input/models"
 )
 
 func SetupWebApp() *gin.Engine {

@@ -3,4 +3,4 @@ RUN curl -sL https://deb.nodesource.com/setup_20.x | bash && apt-get install -y 
 RUN curl -fsSL https://raw.githubusercontent.com/pressly/goose/v3.19.2/install.sh | bash -s v3.19.2 && goose -version
 WORKDIR /app
 COPY . /app
-EXPOSE 80
+EXPOSE 8080

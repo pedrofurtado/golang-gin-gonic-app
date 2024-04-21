@@ -7,7 +7,7 @@ import (
 	"github.com/gin-gonic/gin"
 	"github.com/gin-contrib/requestid"
 	"github.com/google/uuid"
-	"my-app/src/controllers"
+	"my-app/internal/adapter/input/controllers"
 )
 
 func SetupControllers(r *gin.Engine) {

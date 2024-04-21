@@ -6,9 +6,9 @@ import (
 	"github.com/gin-gonic/gin"
 	"github.com/golodash/galidator"
 	"github.com/gin-contrib/requestid"
-	"my-app/src/models"
-	"my-app/src/input_dtos"
-	"my-app/src/use_cases"
+	"my-app/internal/adapter/input/models"
+	"my-app/internal/adapter/input/input_dtos"
+	"my-app/internal/application/use_cases"
 )
 
 var (

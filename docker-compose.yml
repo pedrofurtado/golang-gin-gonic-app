@@ -12,7 +12,7 @@ services:
     restart: always
     volumes:
       - ./:/app
-    command: /bin/bash -c 'goose -allow-missing up && nodemon -L --ext "go,mod,sum" --exec "go run main.go" --signal SIGTERM'
+    command: /bin/bash -c 'goose -allow-missing up && nodemon -L --ext "go,mod,sum" --exec "go run cmd/main.go" --signal SIGTERM'
     build:
       context: .
       dockerfile: Dockerfile.dev
@@ -22,7 +22,7 @@ services:
       # Values: "debug" for development, "release" for production. Equivalent to RAILS_ENV in Rails world
       GIN_MODE: debug
 
-      GOOSE_MIGRATION_DIR: /app/src/migrations
+      GOOSE_MIGRATION_DIR: /app/db
       GOOSE_DRIVER: postgres
       GOOSE_DBSTRING: "host=db_in_postgres port=5432 user=my_db_user password=my_db_password dbname=my_db sslmode=disable"
 
@@ -40,4 +40,4 @@ services:
       APP_SQS_QUEUE_NAME: my-sqs-queue-name
       APP_SQS_WAIT_TIME_SECONDS: "20"
     ports:
-      - 3005:80
+      - 3005:8080
