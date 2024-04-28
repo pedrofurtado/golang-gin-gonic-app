@@ -1,9 +1,11 @@
 version: '3'
 
 services:
-  rabbitmq_in_docker:
+  rabbitmq_in_docker: # Default credentials are: guest / guest
     restart: always
     image: rabbitmq:3.12-management
+    ports:
+      - 3006:15672
 
   db_in_postgres:
     restart: always
@@ -37,5 +39,8 @@ services:
       DATABASE_USER: my_db_user
       DATABASE_PASSWORD: my_db_password
       DATABASE_SSLMODE: disable
+
+      RABBITMQ_CONSUMER_URL: amqp://guest:guest@rabbitmq_in_docker:5672/
+      RABBITMQ_CONSUMER_QUEUE: queue_for_golang_consumer
     ports:
       - 3005:8080

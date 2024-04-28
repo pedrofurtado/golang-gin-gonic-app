@@ -1,3 +1,6 @@
+DOING
+publisher RabbitMQ
+
 [DB]
 db seeds
 
@@ -14,10 +17,8 @@ request-ID
 
 opentelemetry
 
-consumer RabbitMQ (com request-id e tag no log indicando q é consumer)
 consumer Kafka (com request-id e tag no log indicando q é consumer)
 
-publisher RabbitMQ
 publisher Kafka
 
 cron jobs
@@ -33,4 +34,4 @@ golang formatter code
 
 binding.pry equivalente pra golang
 
-github actions CI/CD pipeline, rodando testes + formatter + deploy na vercel ou equivalente
+github actions CI/CD pipeline, rodando testes + formatter + deploy na vercel ou render ou equivalente

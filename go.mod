@@ -8,6 +8,8 @@ require (
 	github.com/go-resty/resty/v2 v2.12.0
 	github.com/golodash/galidator v1.4.3
 	github.com/google/uuid v1.6.0
+	github.com/morkid/paginate v1.1.7
+	github.com/rabbitmq/amqp091-go v1.9.0
 	gorm.io/driver/postgres v1.5.7
 	gorm.io/gorm v1.25.10
 )
@@ -44,7 +46,6 @@ require (
 	github.com/modern-go/concurrent v0.0.0-20180306012644-bacd9c7ef1dd // indirect
 	github.com/modern-go/reflect2 v1.0.2 // indirect
 	github.com/morkid/gocache v1.0.0 // indirect
-	github.com/morkid/paginate v1.1.7 // indirect
 	github.com/nyaruka/phonenumbers v1.1.6 // indirect
 	github.com/pelletier/go-toml/v2 v2.2.1 // indirect
 	github.com/rogpeppe/go-internal v1.12.0 // indirect
