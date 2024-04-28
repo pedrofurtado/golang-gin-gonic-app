@@ -1,6 +1,10 @@
 version: '3'
 
 services:
+  rabbitmq_in_docker:
+    restart: always
+    image: rabbitmq:3.12-management
+
   db_in_postgres:
     restart: always
     image: postgres:11-alpine
@@ -8,11 +12,12 @@ services:
       POSTGRES_USER: my_db_user
       POSTGRES_DB: my_db
       POSTGRES_PASSWORD: my_db_password
-  app:
+
+  golang_app:
     restart: always
     volumes:
-      - ./:/app
-    command: /bin/bash -c 'goose -allow-missing up && nodemon -L --ext "go,mod,sum" --exec "go run cmd/main.go" --signal SIGTERM'
+      - ./:/src
+    command: /bin/bash -c 'goose -allow-missing up && go mod tidy && nodemon -L --ext "go,mod,sum" --exec "go run cmd/main.go" --signal SIGTERM'
     build:
       context: .
       dockerfile: Dockerfile.dev
@@ -22,7 +27,7 @@ services:
       # Values: "debug" for development, "release" for production. Equivalent to RAILS_ENV in Rails world
       GIN_MODE: debug
 
-      GOOSE_MIGRATION_DIR: /app/db
+      GOOSE_MIGRATION_DIR: /src/db/migrations
       GOOSE_DRIVER: postgres
       GOOSE_DBSTRING: "host=db_in_postgres port=5432 user=my_db_user password=my_db_password dbname=my_db sslmode=disable"
 
@@ -32,12 +37,5 @@ services:
       DATABASE_USER: my_db_user
       DATABASE_PASSWORD: my_db_password
       DATABASE_SSLMODE: disable
-
-      AWS_ACCESS_KEY_ID: 'access-key'
-      AWS_SECRET_ACCESS_KEY: 'secret-key'
-      AWS_DEFAULT_REGION: us-east-1
-
-      APP_SQS_QUEUE_NAME: my-sqs-queue-name
-      APP_SQS_WAIT_TIME_SECONDS: "20"
     ports:
       - 3005:8080

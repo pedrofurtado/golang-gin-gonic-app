@@ -1,0 +1,39 @@
+[DB]
+db seeds
+
+[controllers]
+json validation / contract api
+response com erros de validação
+pagination
+filtros via query params
+problema do cache na rota de GET index
+swagger
+autenticação por JWT
+autenticação http basic
+
+logger centralizado
+logger na web e consumers com request-id e indicando em qual contexto está rodando
+request-ID
+
+opentelemetry
+
+consumer RabbitMQ (com request-id e tag no log indicando q é consumer)
+consumer Kafka (com request-id e tag no log indicando q é consumer)
+
+publisher RabbitMQ
+publisher Kafka
+
+cron jobs
+
+jobs on-demand (sidekiq or resque like)
+
+feature flag
+
+cache com redis
+
+testes
+golang formatter code
+
+binding.pry equivalente pra golang
+
+github actions CI/CD pipeline, rodando testes + formatter + deploy na vercel ou equivalente

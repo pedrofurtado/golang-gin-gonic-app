@@ -1,8 +1,8 @@
 package use_cases
 
 import (
-	"my-app/internal/adapter/input/input_dtos"
-	"my-app/internal/adapter/input/models"
+	"my-app/app/input_dtos"
+	"my-app/app/models"
 )
 
 type CreateProductUseCase struct {
