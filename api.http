@@ -9,7 +9,7 @@ Authorization: Basic YWRtaW46MTIzNA==
 
 ###
 
-GET http://localhost:3005/api/products HTTP/1.1
+GET http://localhost:3005/api/products?page=0&per_page=5&sort_by=-quantity&select_by=id,price,quantity&filter_by=[["quantity",">=","8"],["price","<","299"]] HTTP/1.1
 Content-Type: application/json
 Authorization: Basic YWRtaW46MTIzNA==
 
@@ -26,25 +26,25 @@ Content-Type: application/json
 Authorization: Basic YWRtaW46MTIzNA==
 
 {
-	"name": "DDDD",
-	"description": "...",
-	"quantity": 31,
-	"price": 7.80,
-	"active": false
+	"name": "Second product",
+	"description": "second_product",
+	"quantity": 8,
+	"price": 15.99,
+	"active": true
 }
 
 ###
 
-PUT http://localhost:3005/api/products/5244d9a8-5edf-4459-92dd-5ca5c056202d HTTP/1.1
+PUT http://localhost:3005/api/products/966d5d11-abc9-4e11-9dca-b6f18c0aff23 HTTP/1.1
 Content-Type: application/json
 Authorization: Basic YWRtaW46MTIzNA==
 
 {
-	"quantity": 88
+	"description": "first_product"
 }
 
 ###
 
-DELETE http://localhost:3005/api/products/5244d9a8-5edf-4459-92dd-5ca5c056202d HTTP/1.1
+DELETE http://localhost:3005/api/products/878bd5dd-b423-49e5-84be-7707c35b736c HTTP/1.1
 Content-Type: application/json
 Authorization: Basic YWRtaW46MTIzNA==

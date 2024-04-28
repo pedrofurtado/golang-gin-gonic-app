@@ -27,12 +27,10 @@ func ProductsController(r *gin.RouterGroup) {
 }
 
 func indexProducts(r *gin.RouterGroup) {
-	var products []models.Product
-	models.DB.Find(&products)
-
 	r.GET("/products", func(c *gin.Context) {
 		fmt.Printf("%v Processing ProductsController indexProducts\n", requestid.Get(c))
-		c.JSON(http.StatusOK, gin.H{"data": products})
+		paginatedProducts := NewPagination().With(models.DB.Model(&models.Product{})).Request(c.Request).Response(&[]models.Product{})
+		c.JSON(http.StatusOK, paginatedProducts)
 	})
 }
 

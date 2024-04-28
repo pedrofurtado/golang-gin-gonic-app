@@ -4,9 +4,6 @@ db seeds
 [controllers]
 json validation / contract api
 response com erros de validação
-pagination
-filtros via query params
-problema do cache na rota de GET index
 swagger
 autenticação por JWT
 autenticação http basic

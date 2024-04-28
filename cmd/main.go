@@ -1,13 +1,19 @@
 package main
 
 import (
-  web "my-app/cmd/web"
+	models "my-app/app/models"
   consumers "my-app/cmd/consumers"
+  web "my-app/cmd/web"
 )
 
 func main() {
+	setupDatabase()
 	setupConsumers()
 	setupWebApp()
+}
+
+func setupDatabase() {
+	models.SetupDatabaseConnection()
 }
 
 func setupConsumers() {
