@@ -2,10 +2,10 @@ package controllers
 
 import (
 	"fmt"
-	"net/http"
-	"github.com/gin-gonic/gin"
 	"github.com/gin-contrib/requestid"
+	"github.com/gin-gonic/gin"
 	"github.com/go-resty/resty/v2"
+	"net/http"
 )
 
 func ZipcodesController(r *gin.RouterGroup) {
@@ -37,8 +37,8 @@ func indexZipcodes(r *gin.RouterGroup) {
 func searchZipcode(zipcode string) (interface{}, *resty.Response, error) {
 	var parsedResponseBody interface{}
 	response, err := resty.New().R().
-							 SetResult(&parsedResponseBody).
-							 Get(fmt.Sprintf("https://viacep.com.br/ws/%s/json", zipcode))
+		SetResult(&parsedResponseBody).
+		Get(fmt.Sprintf("https://viacep.com.br/ws/%s/json", zipcode))
 
 	return parsedResponseBody, response, err
 }

@@ -2,8 +2,8 @@ package main
 
 import (
 	models "my-app/app/models"
-  consumers "my-app/cmd/consumers"
-  web "my-app/cmd/web"
+	consumers "my-app/cmd/consumers"
+	web "my-app/cmd/web"
 )
 
 func main() {

@@ -2,19 +2,19 @@ package controllers
 
 import (
 	"fmt"
-	"net/http"
+	"github.com/gin-contrib/requestid"
 	"github.com/gin-gonic/gin"
 	"github.com/golodash/galidator"
-	"github.com/gin-contrib/requestid"
-	"my-app/app/models"
 	"my-app/app/input_dtos"
+	"my-app/app/models"
 	"my-app/app/use_cases"
+	"net/http"
 )
 
 var (
 	g = galidator.New().CustomMessages(galidator.Messages{
-    "required": "$field is required",
-  })
+		"required": "$field is required",
+	})
 	validator = g.Validator(input_dtos.CreateProductInputDTO{})
 )
 

@@ -17,11 +17,11 @@ func NewCreateProductUseCase(dto input_dtos.CreateProductInputDTO) CreateProduct
 
 func (uc CreateProductUseCase) Execute() models.Product {
 	product := models.Product{
-		Name: uc.InputDTO.Name,
+		Name:        uc.InputDTO.Name,
 		Description: uc.InputDTO.Description,
-		Price: uc.InputDTO.Price,
-		Quantity: uc.InputDTO.Quantity,
-		Active: uc.InputDTO.Active,
+		Price:       uc.InputDTO.Price,
+		Quantity:    uc.InputDTO.Quantity,
+		Active:      uc.InputDTO.Active,
 	}
 
 	models.DB.Create(&product)
@@ -31,13 +31,13 @@ func (uc CreateProductUseCase) Execute() models.Product {
 
 type UpdateProductUseCase struct {
 	InputDTO input_dtos.UpdateProductInputDTO
-	Product models.Product
+	Product  models.Product
 }
 
 func NewUpdateProductUseCase(dto input_dtos.UpdateProductInputDTO, product models.Product) UpdateProductUseCase {
 	return UpdateProductUseCase{
 		InputDTO: dto,
-		Product: product,
+		Product:  product,
 	}
 }
 

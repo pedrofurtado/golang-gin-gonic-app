@@ -2,10 +2,10 @@ package models
 
 import (
 	"fmt"
+	"gorm.io/driver/postgres"
+	"gorm.io/gorm"
+	"gorm.io/gorm/logger"
 	"os"
-  "gorm.io/gorm"
-  "gorm.io/gorm/logger"
-  "gorm.io/driver/postgres"
 )
 
 var DB *gorm.DB

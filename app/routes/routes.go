@@ -2,12 +2,12 @@ package routes
 
 import (
 	"fmt"
-	"time"
-	"net/http"
-	"github.com/gin-gonic/gin"
 	"github.com/gin-contrib/requestid"
+	"github.com/gin-gonic/gin"
 	"github.com/google/uuid"
 	"my-app/app/controllers"
+	"net/http"
+	"time"
 )
 
 func SetupControllers(r *gin.Engine) {
@@ -36,13 +36,13 @@ func setupApiMiddlewares(r *gin.RouterGroup) {
 
 func setupRequestIDMiddleware(r *gin.RouterGroup) {
 	r.Use(
-    requestid.New(
-      requestid.WithGenerator(func() string {
-        return uuid.New().String()
-      }),
-      requestid.WithCustomHeaderStrKey("X-Request-Id"),
-    ),
-  )
+		requestid.New(
+			requestid.WithGenerator(func() string {
+				return uuid.New().String()
+			}),
+			requestid.WithCustomHeaderStrKey("X-Request-Id"),
+		),
+	)
 }
 
 func setupBasicAuthMiddleware(r *gin.RouterGroup) {
