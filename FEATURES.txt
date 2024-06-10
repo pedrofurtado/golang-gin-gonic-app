@@ -26,6 +26,10 @@ cron jobs
 jobs on-demand (sidekiq or resque like)
 
 feature flag
+  > https://featureflags.io/go-feature-flags/
+  > https://github.com/flipt-io/flipt
+  > https://github.com/AntoineAugusti/feature-flags
+  > https://gofeatureflag.org/docs
 
 cache com redis
 
